@@ -17,6 +17,16 @@ A take-home POC: a natural-language query tool for Washington State vendor payme
 
 Then open the frontend at http://localhost:5173. If that port is taken, Vite prints the actual URL it chose; use that one. Both scripts are idempotent and safe to re-run, and Ctrl-C in the `run.sh` terminal stops both servers.
 
+**Try asking:**
+
+- "Top 10 vendors paid by Health Care Authority"
+- "How much did Molina receive in total?"
+- "Which agency spent the most on travel?"
+- "What was the largest single payment in the dataset?"
+- "What's interesting about Boeing?"
+
+The last one is deliberately vague: it comes back low confidence, which is the cue to edit the interpretation or rephrase. The example pills under the input box and the anomaly cards in the sidebar are other good starting points.
+
 **Project layout:** the backend is a standard FastAPI package under `backend/app`: `api/` holds the router, `services/` holds the planner, executor, dataset, and anomaly logic, `core/` holds config and logging, and `schemas.py` is the Pydantic contract. Configuration is centralized in `core/config.py` via pydantic-settings, which reads `backend/.env`. Dev scripts live in `backend/scripts`.
 
 
